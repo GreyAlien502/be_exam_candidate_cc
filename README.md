@@ -12,3 +12,10 @@ This repo contains an exercise intended for Back-End Engineers.
 ## Expectations
 1. Please take no more than 8 hours to work on this exercise. Complete as much as possible and then submit your solution.
 1. This exercise is meant to showcase how you work. With consideration to the time limit, do your best to treat it like a production system.
+
+## How-To
+
+## Assumptions
+1. `MIDDLE_NAME` column can be omitted from csv file, in which case all records will lack a `MIDDLE_NAME`.
+1. Extra columns can be included in the csv file, in which case they will be ignored.
+1. If any column is missing, one error will be reported for the whole file.
