@@ -65,7 +65,7 @@ would produce:
 * processing should continue in the event of an invalid row; all errors should be collected and added to the corresponding error csv.
 * an error record should contain:
     1. `LINE_NUM` : the number of the record which was invalid
-    * `ERROR_MSG` : a human readable error message about what validation failed
+    1. `ERROR_MSG` : a human readable error message about what validation failed
 * in the event of name collision, the latest file should overwrite the earlier version.
 * the error file should match the name of the input file.
 

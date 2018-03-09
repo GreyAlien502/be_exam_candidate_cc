@@ -14,8 +14,11 @@ This repo contains an exercise intended for Back-End Engineers.
 1. This exercise is meant to showcase how you work. With consideration to the time limit, do your best to treat it like a production system.
 
 ## How-To
+1. Install watchdog with `pip install watchdog`.
+1. Go to the `recordProcessor` directory and run `python fileWatcher.py <input directory> <output directory> <error directory>`.
 
 ## Assumptions
 1. `MIDDLE_NAME` column can be omitted from csv file, in which case all records will lack a `MIDDLE_NAME`.
 1. Extra columns can be included in the csv file, in which case they will be ignored.
 1. If any column is missing, one error will be reported for the whole file.
+1. Empty files will not be written.
