@@ -32,7 +32,13 @@ def watchPath(inputDir,outputDir,errorDir):
 	observer = Observer()
 	observer.schedule(fileWatcher,inputDir)
 	observer.start()
-	sleep(1000)
+	try:
+		while True:
+			sleep(100)
+	except KeyboardInterrupt:
+		observer.stop()
+
+		
 
 if __name__ == '__main__':
 	watchPath(argv[1],argv[2],argv[3])
