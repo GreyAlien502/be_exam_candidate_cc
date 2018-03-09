@@ -74,7 +74,7 @@ class TestCSVParse(unittest.TestCase):
 			(
 				[
 					(1,'FIRST_NAME: 15 character max'),
-					(3, 'FIRST_NAME: cannot be empty, PHONE_NUM: format must be ###-###-####')
+					(3, 'FIRST_NAME: cannot be empty; PHONE_NUM: format must be ###-###-####')
 				],
 				[
 				    {
