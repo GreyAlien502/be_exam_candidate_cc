@@ -9,6 +9,7 @@ class TestCSVParse(unittest.TestCase):
 		pass
 	
 	def genericTester(self,input,output):
+		# tests output of CSVParse on input string against output
 		self.assertEqual(
 			CSVParse( io.StringIO(input) ),
 			output
@@ -45,7 +46,7 @@ class TestCSVParse(unittest.TestCase):
 			'\n'.join([
 				'INTERNAL_ID,FIRST_NAME,LAST_NAME,PHONE_NUM',
 				'12345678,Johannathanielle,Tables,555-555-5555',
-				'12345678,Bobbith,Tables,555-555-5555'
+				'12345678,Bobbith,Tables,555-555-5555',
 			]),
 			(
 				[ (1,'FIRST_NAME: 15 character max') ],
@@ -67,13 +68,13 @@ class TestCSVParse(unittest.TestCase):
 			'\n'.join([
 				'INTERNAL_ID,FIRST_NAME,LAST_NAME,PHONE_NUM',
 				'12345678,Johannathanielle,Tables,555-555-5555',
-				'12345678,Bobbith,Tables,555-555-5555'
-				'12345678,,Tables,55-555-5555'
+				'12345678,Bobbith,Tables,555-555-5555',
+				'12345678,,Tables,55-555-5555',
 			]),
 			(
 				[
 					(1,'FIRST_NAME: 15 character max'),
-					(2, 'FIRST_NAME: cannot be empty, PHONE_NUM: format must be ###-###-####')
+					(3, 'FIRST_NAME: cannot be empty, PHONE_NUM: format must be ###-###-####')
 				],
 				[
 				    {

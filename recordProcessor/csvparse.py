@@ -3,9 +3,11 @@ import json
 import re
 
 class ValidationError(Exception):
+	#so i can catch my errors only
 	pass
 
 def validateRow(rowDict):
+	# Make sure row is valid and remove any empty MIDDLE_NAME
 	if 'MIDDLE_NAME' not in rowDict:
 		rowDict['MIDDLE_NAME'] = ''
 
@@ -40,13 +42,12 @@ def validateRow(rowDict):
 		'LAST_NAME'  : lambda name: max15char(name) or cannotBeEmpty(name),
 		'PHONE_NUM'  : checkPhoneNumber
 	}
-	errors = ', '.join(
+	errors = '; '.join(
 		'{}: {}'.format(key,error)
 		for key in validators.keys()
 		for error in (validators[key](rowDict[key]),)
 		if error
 	)
-	print(errors)
 
 	if errors != '':
 		raise ValidationError(errors)
@@ -56,6 +57,7 @@ def validateRow(rowDict):
 		
 
 def validateHeaders(headers):
+	# Make sure the required columns are present
 	requiredFields= ['INTERNAL_ID', 'FIRST_NAME', 'LAST_NAME', 'PHONE_NUM']
 	missingFields = [ field for field in requiredFields if field not in headers]
 	if missingFields != []:
@@ -66,6 +68,7 @@ def validateHeaders(headers):
 		)
 		
 def parseRow(header,row):
+	# return errors and objects from a row
 	expectedColumns = len(header)
 	actualColumns = len(row)
 	if(expectedColumns != actualColumns):
@@ -87,6 +90,7 @@ def parseRow(header,row):
 
 
 def CSVParse(CSVFile):
+	# given a csvfile, produce (errors, objects) to be written out
 	rows = list(csv.reader(CSVFile))
 	if( len(rows) == 0 ):
 		return [ (0, 'Error: empty file'), [] ]
